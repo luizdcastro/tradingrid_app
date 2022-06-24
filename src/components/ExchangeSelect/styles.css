@@ -1,0 +1,62 @@
+.exchange_select_container{
+    display: flex;
+    width: 380px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+    padding-left: 10px;
+    justify-content: space-between;
+}
+
+.exchange_select_container_option{
+    display: flex;
+    width: 380px;
+    height: 55px;
+    margin-right: 10px;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+    padding-left: 10px;
+    background: #2e2d3a;
+}
+
+.exchange_select_container_option:hover{
+    cursor: pointer;
+    filter: brightness(118%);
+}
+
+.exchange_option_title{
+    font-size: 0.9rem;
+    color: rgba(255,255,255, 0.9);
+    font-weight: 600;  
+}
+
+.exchange_select_logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #1C1B29;
+    padding: 7px;
+    margin-right: 10px;
+}
+
+.exchange_select_logo {
+    width: 26px;
+    height: 26px;
+}
+
+.exchange_option_container{
+    position: absolute;
+    width: 380px;
+    border-top: none;
+    background: #2e2d3a;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+    margin-top: -5px;
+}

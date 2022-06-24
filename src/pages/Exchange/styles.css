@@ -1,0 +1,138 @@
+.exchanges {
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    padding-left: 310px;
+    flex-direction: column;
+    padding-top: 100px;
+    padding-right: 20px;
+}
+
+.exchanges_title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.exchanges_subtitle {
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+}
+
+.exchanges_form {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.exchanges_form_input {
+    width: 380px;
+    height: 55px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    padding-left: 15px;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.exchanges_form_button {
+    width: 380px;
+    height: 55px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: #4e44ce;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.exchanges_form_button_gray{
+    width: 380px;
+    height: 55px;
+    cursor: not-allowed;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #999;
+    background: #404144;;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.exchanges_form_button:hover {
+    cursor: pointer;
+    filter: brightness(105%);
+}
+
+.exchanges_form_button_disabled{
+    width: 380px;
+    height: 55px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: #4e44ce;
+    cursor: not-allowed;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.exchange_configuration_title {
+    font-size: 1rem;
+    font-weight:700;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+}
+
+.exchange_connected_card {
+    width: 100%;
+    height: 68px;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.exchange_connected_card_title {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.exchange_connected_card_text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.exchange_connected_card_icon {
+    display: flex;  
+}
+
+.exchange_connected_card_icon_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);   
+}
+
+.exchange_connected_card_icon_container:hover{
+    background-color: rgba(255, 255, 255, 0.095);
+    cursor: pointer;
+}

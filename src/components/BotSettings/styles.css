@@ -1,0 +1,5 @@
+.bot_settings_setup_form{
+    display: flex;
+    max-width: 800px;
+    flex-wrap: wrap;
+}

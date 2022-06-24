@@ -1,0 +1,64 @@
+.card_market_container{
+    width: 100%;
+    height: 85px;
+    background-color: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    min-width: 350px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);}
+
+.card_market_container:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card_market_image{
+    height: 65px;
+    width: 65px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card_market_image_inactive{
+    height: 65px;
+    width: 65px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    filter: sepia(55%) saturate(5%) hue-rotate(15deg) brightness(110%) contrast(90%);
+}
+
+.card_market_price{
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding-bottom: 2px;
+}
+
+.card_market_price_converted{
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card_market_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 3px;
+    background: #4e44ce ;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+    align-self: right;
+    justify-self: right;
+}
