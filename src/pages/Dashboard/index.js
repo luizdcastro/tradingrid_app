@@ -8,7 +8,6 @@ import './styles.css'
 
 const Dashboard = ({ user, auth, dispatchGetUser }) => {
 
-
     useEffect(() => dispatchGetUser(auth.id),
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [])
@@ -26,8 +25,8 @@ const Dashboard = ({ user, auth, dispatchGetUser }) => {
                     bot_id={item.id}
                     name={item.name}
                     image={One}
-                    growth={item.growth.reduce((a, b) => a + b).toFixed(2)}
-                    profit={item.profit.reduce((a, b) => a + b).toFixed(2)}
+                    growth={item.growth.toFixed(2)}
+                    profit={item.profit.toFixed(2)}
                     status={item.active}
                 />
             ))}

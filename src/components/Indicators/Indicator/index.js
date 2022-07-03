@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Select from '../../Select'
 import InputRange from '../../InputRange'
-import InputCheck from '../../InputCheck'
+
 import {
     addContidionalList,
     contidionalListCross,
@@ -65,7 +65,7 @@ const Indicator = ({ indicator, setIndicator, setNextIndicator }) => {
                         : indicator.indicator === "Price Increased" ?
                             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 <InputRange
-                                    onChange={(e) => setIndicator({ ...indicator, value: e.target.value })}
+                                    onChange={(e) => setIndicator({ ...indicator, value: parseInt(e.target.value) })}
                                     label="Percent"
                                     value={indicator.value || 0.5}
                                     step="0.5"
@@ -86,7 +86,7 @@ const Indicator = ({ indicator, setIndicator, setNextIndicator }) => {
                             : indicator.indicator === "Price Decreased" ?
                                 <div style={{ display: 'flex' }}>
                                     <InputRange
-                                        onChange={(e) => setIndicator({ ...indicator, value: e.target.value })}
+                                        onChange={(e) => setIndicator({ ...indicator, value: parseInt(e.target.value) })}
                                         label="Percent"
                                         value={indicator.value || 0.5}
                                         step="0.5"
@@ -134,7 +134,7 @@ const Indicator = ({ indicator, setIndicator, setNextIndicator }) => {
 
                 null
                 : <InputRange
-                    onChange={(e) => setIndicator({ ...indicator, value: e.target.value })}
+                    onChange={(e) => setIndicator({ ...indicator, value: parseInt(e.target.value) })}
                     label="Value"
                     value={indicator.value || 0}
                     step="1"
@@ -151,7 +151,7 @@ const Indicator = ({ indicator, setIndicator, setNextIndicator }) => {
                 {addContidionalList.map((item) => (
                     <option key={item.value} value={item.value}>{item.label}</option>
                 ))}
-            </Select>       
+            </Select>
 
         </React.Fragment>
     )

@@ -60,7 +60,7 @@ const BotSettings = ({
             <InputRange
                 label="Alocation Funds"
                 value={funds}
-                onChange={(e) => setFunds(e.target.value)}
+                onChange={(e) => setFunds(parseInt(e.target.value))}
                 step="0.5"
                 symbol={"%"}
                 max={100}
@@ -70,7 +70,7 @@ const BotSettings = ({
                 label="Stop Loss"
                 inputLabel={"Stop Loss"}
                 value={stopLoss}
-                onChange={(e) => setStopLoss(e.target.value)}
+                onChange={(e) => setStopLoss(parseInt(e.target.value))}
                 step="0.5"
                 symbol={"%"}
                 max={100}
