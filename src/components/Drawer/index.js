@@ -7,6 +7,7 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react'
 import { getUser } from '../../redux/actions/userActions'
 import Logo from '../../assets/images/logo.png'
 import Solana from '../../assets/images/solana.png'
+import { getParsedNftAccountsByOwner } from "@nfteyez/sol-rayz"
 
 import { connect } from "react-redux"
 import { auth, logoutUser } from '../../redux/actions/authActions'
@@ -42,8 +43,13 @@ const Drawer = ({ dispatchAuth, dispatchLogout, dispatchGetUser }) => {
         if (connected) {
             const balance = await connection.getBalance(publicKey)
             setBalance(parseInt(balance).toExponential(5).slice(0, 7))
+
+            const nftArray = await getParsedNftAccountsByOwner({ publicAddress: publicKey.toString() })
+
+            console.log(nftArray)
         }
     }
+
 
     useEffect(() => {
         getBalance()
@@ -83,6 +89,7 @@ const Drawer = ({ dispatchAuth, dispatchLogout, dispatchGetUser }) => {
                     <FaLock size={22} className={path === '/exchange' ? 'drawer_menu_item_icon_active' : 'drawer_menu_item_icon_inactive'} />
                     <p className={path === '/exchange' ? 'drawer_menu_item_name_active' : 'drawer_menu_item_name_inactive'}>Exchange</p>
                 </Link>
+                
                 {/*
                 <Link to="/marketplace" className='drawer_menu_item'>
                     <FaBox size={20} className={path === '/marketplace' ? 'drawer_menu_item_icon_active' : 'drawer_menu_item_icon_inactive'} />

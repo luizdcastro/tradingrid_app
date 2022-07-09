@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux"
 import { getUser } from '../../redux/actions/userActions'
 import { deleteBot, updateBot } from '../../redux/actions/botActions'
-import { useParams, Link, useSearchParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import { AreaChart, Area, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts'
 import { FaPause, FaPen, FaTrash, FaArrowLeft, FaPlay } from "react-icons/fa"
 import One from '../../assets/images/0.png'
-
 import './styles.css'
 
 const Dashboard = ({ user, auth, dispatchGetUser, dispatchDeleteBot, dispatachUpdateBot }) => {
     const { id } = useParams()
     const navigate = useNavigate()
     let moment = require('moment')
-    const [data, setData] = useState([])
+    const [data, setData] = useState([
+        {
+            profit: 0,
+            percent: 0
+        }
+    ])
 
     useEffect(() => dispatchGetUser(auth.id),
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,8 +61,13 @@ const Dashboard = ({ user, auth, dispatchGetUser, dispatchDeleteBot, dispatachUp
                 percent: order.percent
             })
         }
-        setData(listOfOrders)
+        if (listOfOrders.length) {
+            setData(listOfOrders)
+        }
+
     }, [])
+
+    console.log(data)
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
@@ -91,7 +100,6 @@ const Dashboard = ({ user, auth, dispatchGetUser, dispatchDeleteBot, dispatachUp
                 </div>
                 <div className='bot_details_settings_information'>
                     <div className='bot_details_settings_information_container'>
-
                         <div style={{ flex: 1 }}>
                             <p className='bot_details_settings_subtitle'>Exchange</p>
                             <p className='bot_details_settings_title'>{bot.settings.exchange}</p>
@@ -151,46 +159,54 @@ const Dashboard = ({ user, auth, dispatchGetUser, dispatchDeleteBot, dispatachUp
             </div>
             <p className='exchange_configuration_title'>History</p>
 
-            {orders?.map((item) => (
-                <div className="card_market_container" key={item.id}>
-                    <div className='order_card_label'>
-                        <p className='order_card_label_text'>Order</p>
+            {orders.length ?
+                orders.map((item) => (
+                    <div className="card_market_container" key={item.id}>
+                        <div style={{ display: 'flex' }}>
+                            <div className='order_card_label'>
+                                <p className='order_card_label_text'>Order</p>
+                            </div>
+                            <div>
+                                <p className='order_card_title'>Status</p>
+                                <p className='order_card_value'>{item.active ? "Open" : "Closed"}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Open Time</p>
+                            <p className='order_card_value'>{moment(item.open_time).format("MM-DD-YY hh:mm A")}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Buy Price</p>
+                            <p className='order_card_value'>{item.buy_price?.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Close Time</p>
+                            <p className='order_card_value'>{item.close_time && (moment(item.close_time).format("MM-DD-YY hh:mm A"))}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Sell Price</p>
+                            <p className='order_card_value'>{item.sell_price?.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Quantity</p>
+                            <p className='order_card_value'>{item.quantity?.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Growth</p>
+                            <p className='order_card_value'>{!!item.percent || item.percent === 0 ? item.percent?.toFixed(2) + "%" : ""}</p>
+                        </div>
+                        <div>
+                            <p className='order_card_title'>Profit</p>
+                            <p className='order_card_value'>{!!item.profit || item.percent === 0 ? "$" + item.profit.toFixed(2) : ""}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p className='order_card_title'>Status</p>
-                        <p className='order_card_value'>{item.active ? "Open" : "Closed"}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Open Time</p>
-                        <p className='order_card_value'>{moment(item.open_time).format("MM-DD-YY hh:mm A")}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Buy Price</p>
-                        <p className='order_card_value'>{item.buy_price?.toFixed(2)}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Close Time</p>
-                        <p className='order_card_value'>{item.close_time && (moment(item.close_time).format("MM-DD-YY hh:mm A"))}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Sell Price</p>
-                        <p className='order_card_value'>{item.sell_price?.toFixed(2)}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Quantity</p>
-                        <p className='order_card_value'>{item.quantity?.toFixed(2)}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Growth</p>
-                        <p className='order_card_value'>{!!item.percent || item.percent === 0 ? item.percent?.toFixed(2) + "%" : ""}</p>
-                    </div>
-                    <div>
-                        <p className='order_card_title'>Profit</p>
-                        <p className='order_card_value'>{!!item.profit || item.percent === 0 ? "$" + item.profit.toFixed(2) : ""}</p>
-                    </div>
+                ))
+                :
+                <div style={{ marginTop: 15 }}>
+                    <p className='no_results_title'>No results found</p>
+                    <p className='no_results_subtitle'>No orders or events have been created yet.</p>
                 </div>
-            ))}
-
+            }
         </div>
     )
 }
